@@ -13,12 +13,14 @@ import AddChecklist from "./pages/AddChecklist";
 import AddItem from "./pages/AddItem";
 import ItemDetail from "./pages/ItemDetail";
 import RenameItem from "./pages/RenameItem";
+import Navbar from "./shared-components/Navbar";
 
 export default function App() {
   const { token } = useAuth();
 
   return (
     <Router>
+      {token && <Navbar />}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

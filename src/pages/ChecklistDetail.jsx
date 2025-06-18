@@ -60,43 +60,49 @@ export default function ChecklistDetail() {
       </div>
 
       <div className="space-y-3">
-        {items.map((item) => (
-          <div
-            key={item?.id}
-            className="flex items-center justify-between bg-white p-4 rounded-lg shadow"
-          >
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={item?.itemCompletionStatus}
-                onChange={() => handleToggle(item?.id)}
-              />
-              <span
-                className={
-                  item?.itemCompletionStatus
-                    ? "line-through text-gray-400"
-                    : "text-gray-800"
-                }
-              >
-                {item?.name}
-              </span>
-            </div>
-            <div className="flex gap-2">
-              <Link
-                to={`/checklists/${id}/items/${item?.id}/rename`}
-                className="text-blue-500 hover:underline"
-              >
-                Ubah
-              </Link>
-              <button
-                onClick={() => handleDelete(item?.id)}
-                className="text-red-500 hover:underline"
-              >
-                Hapus
-              </button>
-            </div>
+        {items.length === 0 ? (
+          <div className="text-center text-gray-500 italic mt-8">
+            Belum ada item checklist. Tambahkan satu untuk memulai.
           </div>
-        ))}
+        ) : (
+          items.map((item) => (
+            <div
+              key={item?.id}
+              className="flex items-center justify-between bg-white p-4 rounded-lg shadow"
+            >
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={item?.itemCompletionStatus}
+                  onChange={() => handleToggle(item?.id)}
+                />
+                <span
+                  className={
+                    item?.itemCompletionStatus
+                      ? "line-through text-gray-400"
+                      : "text-gray-800"
+                  }
+                >
+                  {item?.name}
+                </span>
+              </div>
+              <div className="flex gap-2">
+                <Link
+                  to={`/checklists/${id}/items/${item?.id}/rename`}
+                  className="text-blue-500 hover:underline"
+                >
+                  Ubah
+                </Link>
+                <button
+                  onClick={() => handleDelete(item?.id)}
+                  className="text-red-500 hover:underline"
+                >
+                  Hapus
+                </button>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

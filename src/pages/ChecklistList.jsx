@@ -36,29 +36,35 @@ export default function ChecklistList() {
         to="/checklists/new"
         className="block mb-4 text-blue-600 hover:underline"
       >
-        + Buat Checklist
+        + Buat To do
       </Link>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {checklists?.map((c) => (
-          <div
-            key={c?.id}
-            className="bg-yellow-100 p-4 rounded-lg shadow hover:shadow-md transition relative"
-          >
-            <Link to={`/checklists/${c?.id}`} className="block">
-              <h2 className="font-semibold text-lg text-gray-800">
-                {c?.name ? c?.name : "Untitled"}
-              </h2>
-            </Link>
-            <button
-              onClick={() => handleDelete(c?.id)}
-              className="absolute top-2 right-2 text-sm text-red-500 hover:text-red-700"
+      {checklists.length === 0 ? (
+        <div className="text-center text-gray-500 mt-10">
+          Belum ada checklist. Tambahkan satu untuk memulai!
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {checklists.map((c) => (
+            <div
+              key={c?.id}
+              className="bg-yellow-100 p-4 rounded-lg shadow hover:shadow-md transition relative"
             >
-              Hapus
-            </button>
-          </div>
-        ))}
-      </div>
+              <Link to={`/checklists/${c?.id}`} className="block">
+                <h2 className="font-semibold text-lg text-gray-800">
+                  {c?.name ? c?.name : "Untitled"}
+                </h2>
+              </Link>
+              <button
+                onClick={() => handleDelete(c?.id)}
+                className="absolute top-2 right-2 text-sm text-red-500 hover:text-red-700"
+              >
+                Hapus
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
