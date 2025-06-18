@@ -1,8 +1,6 @@
-# 📝 Google Keep Style To-Do List App
+# 📝 To-Do List App
 
 A modern, minimalist **To-Do List Web App** built with **React + Vite**, inspired by the elegant and intuitive interface of **Google Keep**.
-
-![screenshot](https://via.placeholder.com/900x400?text=Screenshot+App)
 
 ---
 
@@ -35,7 +33,7 @@ A modern, minimalist **To-Do List Web App** built with **React + Vite**, inspire
 
 ```bash
 # Clone repository
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/Atosugiharto/to-do-list-app
 cd your-repo-name
 
 # Install dependencies
